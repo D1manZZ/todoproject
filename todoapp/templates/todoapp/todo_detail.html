@@ -1,0 +1,16 @@
+{% extends 'todoapp/base.html' %}
+{% block content %}
+    <div style="margin-top: 70px; padding: 20px 10px 10px 10px; background-color: lightgray; border-radius: 5px; border: 1px solid {% if todo.completed %}green{% elif todo.important %}red{% else %}orange{% endif %};">
+        <h4 style="margin-bottom: 10px;">{{ todo.title }}</h4>
+        <p>It's important: {% if todo.important %}yes{% else %}no{% endif %}</p>
+        <p>Created: {{ todo.created }}</p>
+        <p>Status: {% if todo.completed %}completed {{ todo.completed }}{% else %}completing...{% endif %}</p>
+    <div>
+        {% if not todo.completed %}
+            <a href="{% url 'complete_todo' todo.pk %}" class="btn btn-success" style="margin: 5px;">Complete</a>
+            <a href="{% url 'edit_todo' todo.pk %}" class="btn btn-primary" style="margin: 5px;">Edit</a>
+        {% endif %}
+            <a href="{% url 'delete_todo' todo.pk %}" class="btn btn-danger" style="margin: 5px;">Delete</a>
+    </div>
+    </div>
+{% endblock %}

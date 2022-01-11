@@ -1,0 +1,10 @@
+{% extends 'todoapp/base.html' %}
+{% block content %}
+    <div style="height: 100vh; display: flex; justify-content: center; align-items: center;">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="login" class="btn btn-primary" style="width: 100%;">
+        </form>
+    </div>
+{% endblock %}

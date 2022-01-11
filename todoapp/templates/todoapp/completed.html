@@ -1,0 +1,18 @@
+{% extends 'todoapp/base.html' %}
+{% block content %}
+    <div style="padding-top: 70px;">
+    {% if todos %}
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                {% for todo in todos %}
+                    <a href="{% url 'todo_detail' todo.pk %}" style="text-decoration: none;">
+                    <li class="list-group-item" style="color: green;">{{ todo.title }}</li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+        <p>You dont have any completed todo, want to check currents? <a href="{% url 'current' %}" class="btn btn-primary">Current todos</a></p>
+    {% endif %}
+    </div>
+{% endblock %}
